@@ -7,6 +7,11 @@ const style = {
 class App extends Component {
   constructor(props) {
     super(props);
+    this.toggleTheme = () => {
+      this.setState(
+        (state) => ({ theme: state.theme === themes.dark ? themes.light : themes.dark })
+      );
+    };
     this.state = { 
       theme: themes.light
     };
@@ -14,8 +19,8 @@ class App extends Component {
   render() {
     return (
       <div className="wrap" style={style}>
-        <button style={this.state.theme}>Toggle Theme</button>
-        <button style={this.state.theme}>Do Nothing</button>
+        <button onClick={this.toggleTheme} style={this.state.theme}>Toggle Theme</button>
+        <button onClick={this.toggleTheme} style={this.state.theme}>Do Nothing</button>
       </div>
     );
   }
