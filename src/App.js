@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import themes from './themes';
+import Toolbar from './Toolbar';
+import ThemeContext from './ThemeContext';
 const style = {
   fontFamily: 'sans-serif',
   textAlign: 'center'
@@ -13,14 +15,16 @@ class App extends Component {
       );
     };
     this.state = { 
-      theme: themes.light
+      theme: themes.light,
+      toggleTheme: this.toggleTheme
     };
   }
   render() {
     return (
       <div className="wrap" style={style}>
-        <button onClick={this.toggleTheme} style={this.state.theme}>Toggle Theme</button>
-        <button onClick={this.toggleTheme} style={this.state.theme}>Do Nothing</button>
+        <ThemeContext.Provider value={this.state}>
+          <Toolbar />
+        </ThemeContext.Provider>
       </div>
     );
   }
