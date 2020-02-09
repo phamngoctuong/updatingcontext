@@ -1,29 +1,22 @@
-import React, { Component } from 'react';
-import themes from './themes';
+import React, { Component, PropTypes } from 'react';
 import Toolbar from './Toolbar';
+import themes from './themes';
 import ThemeContext from './ThemeContext';
 const style = {
-  fontFamily: 'sans-serif',
   textAlign: 'center'
-};
+}
 class App extends Component {
   constructor(props) {
     super(props);
-    this.toggleTheme = () => {
-      this.setState(
-        (state) => ({ theme: state.theme === themes.dark ? themes.light : themes.dark })
-      );
-    };
-    this.state = { 
-      theme: themes.light,
-      toggleTheme: this.toggleTheme
-    };
+    this.state = {
+      theme: themes.light
+    }
   }
   render() {
     return (
-      <div className="wrap" style={style}>
+      <div style={style}>
         <ThemeContext.Provider value={this.state}>
-          <Toolbar />
+          <Toolbar/>
         </ThemeContext.Provider>
       </div>
     );

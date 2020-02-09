@@ -1,11 +1,21 @@
-import React, { Fragment, Component } from 'react';
-import ThemeTogglerButton from './ThemeTogglerButton';
+import React, { Component, Fragment } from 'react';
+import ThemeContext from './ThemeContext';
 class Toolbar extends Component {
 	render() {
 		return (
 			<Fragment>
-				<ThemeTogglerButton />
-			</Fragment>
+				<ThemeContext.Consumer>
+					{
+						({theme}) => {
+							return(
+								<div>
+									{console.log(theme)}
+								</div>
+							);
+						}
+					}
+		    </ThemeContext.Consumer>
+      </Fragment>
 		);
 	}
 }
